@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  
+
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
   def show
   end
 
@@ -40,12 +44,12 @@ class UsersController < ApplicationController
     end
 
     # beforeフィルター
-    
+
     # paramsハッシュからユーザーを取得します。
     def set_user
       @user = User.find(params[:id])
     end
-    
+
     # ログイン済みのユーザーか確認します。
     def logged_in_user
       unless logged_in?
@@ -54,10 +58,9 @@ class UsersController < ApplicationController
         redirect_to login_url
       end
     end
-   
+
     # アクセスしたユーザーが現在ログインしているユーザーか確認します。
     def correct_user
-      @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 end
