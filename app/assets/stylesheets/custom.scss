@@ -96,3 +96,8 @@ p {
     color: $state-danger-text;
   }
 }
+/* モーダルウインドウの位置調整 */
+
+.modal-dialog-center {
+  padding-top: 10%;
+}
