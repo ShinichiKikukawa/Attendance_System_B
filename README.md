@@ -8,6 +8,3 @@
 * Ruby
 * Rails
 * Git
-
-test
-test
