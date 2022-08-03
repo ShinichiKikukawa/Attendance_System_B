@@ -1,4 +1,8 @@
 class AttendancesController < ApplicationController
+  before_action :set_user, only: [:edit_one_month, :update_one_month]
+  before_action :logged_in_user, only: [:update, :edit_one_month]
+  before_action :set_one_month, only: :edit_one_month
+
   UPDATE_ERROR_MSG = "勤怠登録に失敗しました。やり直してください。"
 
   def update
@@ -20,4 +24,16 @@ class AttendancesController < ApplicationController
     end
     redirect_to @user
   end
+
+  def edit_one_month
+  end
+
+  def update_one_month
+  end
+
+  private
+    # 1ヶ月分の勤怠情報を扱います。
+    def attendances_params
+      params.require(:user).permit(attendances: [:started_at, :finished_at, :note])[:attendances]
+    end
 end
