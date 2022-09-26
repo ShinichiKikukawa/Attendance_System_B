@@ -16,6 +16,6 @@ puts "Admin User.created!"
                email: email,
                password: password,
                password_confirmation: password)
-puts "User.created!"
+puts "User.-#{n+1}created!"
 
 end
