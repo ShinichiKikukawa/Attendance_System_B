@@ -3,9 +3,9 @@
   <table class="table table-bordered table-condensed user-table"  id="table-attendances">
     <tr>
       <td>
-        <%= link_to " ←️️︎ ", user_path(date: @first_day.prev_month), class: "btn bt-xs btn-default" %>
-        &emsp;<%= l(@first_day, format: :middle) %>時間管理表&emsp;
-        <%= link_to " →️", user_path(date: @first_day.next_month), class: "btn btn-default" %>
+        <%= link_to " ←️️︎ ", user_path(date: @first_day.prev_month), class: "btn btn-primary" %>
+        &emsp;【<%= l(@first_day, format: :middle) %>】時間管理表&emsp;
+        <%= link_to " →️", user_path(date: @first_day.next_month), class: "btn btn-primary" %>
       </td>
       <td>指定勤務時間：<%= format_basic_info(@user.work_time) %></td>
       <td colspan="3">基本時間：<%= format_basic_info(@user.basic_time) %></td>
@@ -18,13 +18,13 @@
       <td>コード</td>
       <td></td>
       <td>出勤日数：<%= @worked_sum %>日</td>
-      <td>締め：<%= l(@last_day, format: :short) %></td>
+      <td>締日：<%= l(@last_day, format: :short) %></td>
     </tr>
   </table>
 </div>
 
 <div class="btn-users-show">
-<%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-default" %>
+<%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-primary"%>
 </div>
 <div>
   <table class="table table-bordered table-condensed table-striped table-hover" id="table-attendances">
